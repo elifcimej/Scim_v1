@@ -1,0 +1,71 @@
+﻿@model Scım_v1.Models.ViewModels.LoginViewModel
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank Login</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-card">
+
+            <div class="login-header">
+                <div class="logo">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <rect width="36" height="36" rx="8" fill="#6366F1" />
+                        <path d="M12 14h12v8H12v-8zm2 2v4h8v-4h-8zm-2-4h12v2H12v-2zm0 12h12v2H12v-2z" fill="white" />
+                    </svg>
+                </div>
+                <h1>Scım</h1>
+            </div>
+
+            <form asp-controller="Account" asp-action="Login" method="post" class="login-form">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <div class="password-wrapper">
+                        <input asp-for="Password" type="password" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" asp-for="RememberMe">
+                        <span class="checkmark"></span>
+                        Remember this device
+                    </label>
+
+                    <a href="#" class="forgot-link">Reset password</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Sign In
+                </button>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</body>
+</html>
