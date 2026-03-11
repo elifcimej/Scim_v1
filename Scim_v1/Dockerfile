@@ -12,19 +12,19 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Scım_v1/Scım_v1.csproj", "Scım_v1/"]
-RUN dotnet restore "./Scım_v1/Scım_v1.csproj"
+COPY ["Scim_v1/Scim_v1.csproj", "Scim_v1/"]
+RUN dotnet restore "./Scim_v1/Scim_v1.csproj"
 COPY . .
-WORKDIR "/src/Scım_v1"
-RUN dotnet build "./Scım_v1.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Scim_v1"
+RUN dotnet build "./Scim_v1.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Scım_v1.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Scim_v1.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Scım_v1.dll"]
+ENTRYPOINT ["dotnet", "Scim_v1.dll"]
