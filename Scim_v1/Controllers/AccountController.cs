@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Scım_v1.Context;
-using Scım_v1.Models;
-using Scım_v1.Models.ViewModels;
+using Scim_v1.Context;
+using Scim_v1.Models;
+using Scim_v1.Models.ViewModels;
 using System.Reflection.Metadata.Ecma335;
 
-namespace Scım_v1.Controllers
+namespace Scim_v1.Controllers
 {
     public class AccountController : Controller
     {

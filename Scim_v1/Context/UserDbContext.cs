@@ -1,7 +1,7 @@
-﻿using Scım_v1.Models;
+﻿using Scim_v1.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Scım_v1.Context
+namespace Scim_v1.Context
 {
     public class UserDbContext : DbContext
     {

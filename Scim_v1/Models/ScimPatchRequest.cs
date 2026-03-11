@@ -1,4 +1,4 @@
-﻿namespace Scım_v1.Models
+﻿namespace Scim_v1.Models
 {
     public class ScimPatchRequest
     {

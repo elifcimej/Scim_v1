@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Scım_v1.Context;
-using Scım_v1.Models;
+using Scim_v1.Context;
+using Scim_v1.Models;
 using System.ComponentModel.DataAnnotations;
-namespace Scım_v1.Controllers.Scım
+namespace Scim_v1.Controllers.Scım
 {
     [ApiController]
     [Route("scim/v2")]

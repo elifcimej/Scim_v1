@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Scým_v1.Context;
-using Scým_v1.Models;
+using Scim_v1.Context;
+using Scim_v1.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

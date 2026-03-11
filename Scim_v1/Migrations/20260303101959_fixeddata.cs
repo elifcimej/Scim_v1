@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Scım_v1.Migrations
+namespace Scim_v1.Migrations
 {
     /// <inheritdoc />
     public partial class fixeddata : Migration

@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Scım_v1.Models;
+using Scim_v1.Models;
 
-namespace Scım_v1.Controllers
+namespace Scim_v1.Controllers
 {
     public class HomeController : Controller
     {
