@@ -19,20 +19,36 @@ namespace Scim_v1.Controllers.Scım
         public IActionResult CreateUser([FromBody] ScimUserRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
+
             var user = new User
             {
-                UserName = request.userName.FirstOrDefault()?.value,
+                UserName = request.userName,
                 FirstName = request.name?.givenName,
                 LastName = request.name?.familyName,
+                Email = request.emails?.FirstOrDefault()?.value,
                 IsActive = request.active
             };
 
             _context.Users.Add(user);
             _context.SaveChanges();
-            return Ok(user);
+
+            return Ok(new
+            {
+                schemas = new[] { "urn:ietf:params:scim:schemas:core:2.0:User" },
+                id = user.Id.ToString(),
+                userName = user.UserName,
+                active = user.IsActive,
+                name = new
+                {
+                    givenName = user.FirstName,
+                    familyName = user.LastName
+                },
+                emails = new[]
+                {
+            new { value = user.Email, primary = true }
+        }
+            });
         }
 
         [HttpGet("Users")]
@@ -129,7 +145,7 @@ namespace Scim_v1.Controllers.Scım
                     detail = $"User {id} not found"
                 });
 
-            user.UserName = request.userName?.FirstOrDefault()?.value ?? user.UserName;
+            user.UserName = request.userName ?? user.UserName;
             user.FirstName = request.name?.givenName ?? user.FirstName;
             user.LastName = request.name?.familyName ?? user.LastName;
             user.Email = request.emails?.FirstOrDefault()?.value ?? user.Email;
@@ -238,7 +254,7 @@ namespace Scim_v1.Controllers.Scım
                     detail = $"User {id} not found"
                 });
 
-            user.IsActive = false; // _context.Users.Remove(user); ile siledebilirim ama kullanıcıyı deaktif yapmak daha güvenli geldi
+            user.IsActive = false; // _context.Users.Remove(user); ile siledebilirim ama bana böyle kullanıcıyı deaktif yapmak daha güvenli geldi
             _context.SaveChanges();
             return NoContent();
         }

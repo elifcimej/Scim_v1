@@ -2,7 +2,7 @@
 {
     public class ScimUserRequest
     {
-        public List<ScimUserName> userName { get; set; }
+        public string userName { get; set; }
 
         public ScimName name { get; set; }
 

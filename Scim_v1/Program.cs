@@ -59,6 +59,7 @@ using (var scope = app.Services.CreateScope())
         user.UserName = "admin";
         user.FirstName = "Elif";
         user.LastName = "Çimen";
+        user.Email = "admin@test.com";
         user.IsActive = true;
         user.CreatedAt = DateTime.UtcNow;
         user.PasswordHash = hasher.HashPassword(user, "123456");
