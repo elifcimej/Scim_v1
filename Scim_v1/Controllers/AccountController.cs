@@ -39,7 +39,7 @@ namespace Scim_v1.Controllers
 
             if (result == PasswordVerificationResult.Success)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "UserManagement");
             }
             else
             {

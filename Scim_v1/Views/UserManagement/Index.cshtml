@@ -1,0 +1,55 @@
+﻿@model List<Scim_v1.Models.User>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Kullanıcı Listesi</h2>
+
+        <a href="/UserManagement/Create" class="btn btn-primary">
+            + Kullanıcı Ekle
+        </a>
+    </div>
+
+    <div class="card shadow-sm p-3">
+        <table class="table table-hover table-striped align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Email</th>
+                    <th>Durum</th>
+                    <th>Oluşturulma</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+
+                        <td>
+                            @if (user.IsActive)
+                            {
+                                <span class="badge bg-success">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Pasif</span>
+                            }
+                        </td>
+
+                        <td>@user.CreatedAt.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
